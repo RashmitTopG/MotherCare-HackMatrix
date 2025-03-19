@@ -19,6 +19,10 @@ export default function CommunityPage() {
   const [sortOrder, setSortOrder] = useState("Newest");
   const userId = localStorage.getItem("userId");
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
   // Fetch posts based on selected tag
   useEffect(() => {
     fetchPosts();
@@ -26,7 +30,7 @@ export default function CommunityPage() {
 
   const fetchPosts = async () => {
     try {
-      let url = `http://localhost:3000/community${selectedTag !== "All" ? `/tag/${selectedTag}` : ""}`;
+      let url = `${BACKEND_URL}/community${selectedTag !== "All" ? `/tag/${selectedTag}` : ""}`;
       const response = await axios.get(url);
       setPosts(response.data);
     } catch (error) {
@@ -71,7 +75,7 @@ export default function CommunityPage() {
     e.preventDefault();
     try {
       let userId = localStorage.getItem("userId")?.trim();
-      const response = await axios.post("http://localhost:3000/community", {
+      const response = await axios.post(`${BACKEND_URL}/community`, {
         userId,
         content: post.healthIssue,
         tags: post.tags,
@@ -92,7 +96,7 @@ export default function CommunityPage() {
       console.log(userId),
       console.log(reply)
 
-      const response = await axios.post(`http://localhost:3000/community/${postId}/reply`, {
+      const response = await axios.post(`${BACKEND_URL}/community/${postId}/reply`, {
         userId,
         content: reply,
       });

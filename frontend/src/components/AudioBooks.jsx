@@ -3,6 +3,11 @@ import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
+
 const YouTubeAudio = () => {
   const [videos, setVideos] = useState([]);
   const [search, setSearch] = useState("");
@@ -12,7 +17,7 @@ const YouTubeAudio = () => {
   // Fetching videos from the API on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:3000/books/youtube-audio")
+      .get(`${BACKEND_URL}/books/youtube-audio`)
       .then((response) => {
         setVideos(response.data);
       })

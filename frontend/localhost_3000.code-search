@@ -1,0 +1,241 @@
+# Query: localhost:3000
+# ContextLines: 1
+
+50 results - 41 files
+
+HM0068_Cipher/frontend/src/components/AllAppointments.jsx:
+  23        try {
+  24:         const response = await axios.get(`${process.env.BACKEND_URL}/appointments/${userId}`);
+  25          console.log(response);
+
+HM0068_Cipher/frontend/src/components/Appointment.jsx:
+  33      try {
+  34:       const response = await axios.post(`${process.env.BACKEND_URL}/api/schedule`, formattedData);
+  35        console.log(response);
+
+HM0068_Cipher/frontend/src/components/AudioBooks.jsx:
+  14      axios
+  15:       .get(`${process.env.BACKEND_URL}/books/youtube-audio`)
+  16        .then((response) => {
+
+HM0068_Cipher/frontend/src/components/BabyName.jsx:
+  23          try {
+  24:             const response = await axios.post(`${process.env.BACKEND_URL}/names/generate-names`, requestData, {
+  25                  headers: { "Content-Type": "application/json" }
+
+HM0068_Cipher/frontend/src/components/ChatBot.jsx:
+  39          try {
+  40:             const response = await axios.post(`${process.env.BACKEND_URL}/chatbot`, { message: text });
+  41              const botMessage = { text: response.data.reply, sender: "bot" };
+
+HM0068_Cipher/frontend/src/components/CloudOcr.jsx:
+  34          try {
+  35:             const response = await axios.post(`${process.env.BACKEND_URL}/extract`, formData, {
+  36                  headers: { "Content-Type": "multipart/form-data" },
+
+HM0068_Cipher/frontend/src/components/Community.jsx:
+  28      try {
+  29:       let url = `${process.env.BACKEND_URL}/community${selectedTag !== "All" ? `/tag/${selectedTag}` : ""}`;
+  30        const response = await axios.get(url);
+
+  73        let userId = localStorage.getItem("userId")?.trim();
+  74:       const response = await axios.post(`${process.env.BACKEND_URL}/community`, {
+  75          userId,
+
+  94  
+  95:       const response = await axios.post(`http://localhost:3000/community/${postId}/reply`, {
+  96          userId,
+
+HM0068_Cipher/frontend/src/components/Diet.jsx:
+  22        try {
+  23:         const response = await axios.get(`${process.env.BACKEND_URL}/health/userinfo/${userId}`);
+  24          setHealthData(response.data);
+
+  42        }
+  43:       const response = await axios.get(`${process.env.BACKEND_URL}/health/recommend/${userId}`);
+  44        setDiet(response.data.mealPlan);
+
+HM0068_Cipher/frontend/src/components/DoctorCall.jsx:
+  16        setPeerId(id);
+  17:       await fetch(`${process.env.BACKEND_URL}/call/setDoctorPeerId`, {
+  18          method: "POST",
+
+HM0068_Cipher/frontend/src/components/DrugCheck.jsx:
+  19          try {
+  20:             const response = await fetch(`${process.env.BACKEND_URL}/${endpoint}`, {
+  21                  method: "POST",
+
+HM0068_Cipher/frontend/src/components/Login.jsx:
+  17      try {
+  18:       const response = await axios.post(`${process.env.BACKEND_URL}/login`, {
+  19          email,
+
+  26        const { userId, name, token } = response.data;
+  27:       const healthInfo = await axios.get(`${process.env.BACKEND_URL}/health/userinfo/${userId}`)
+  28        const{height, weight, age,medicalConditions} =  healthInfo.data;
+
+HM0068_Cipher/frontend/src/components/MedicalHistory.jsx:
+  39      try {
+  40:         const response = await axios.post(`${process.env.BACKEND_URL}/health`, formData);
+  41  
+
+HM0068_Cipher/frontend/src/components/OtpVerify.jsx:
+  19  
+  20:       const response = await axios.post(`${process.env.BACKEND_URL}/verify-otp`, {
+  21          email,
+
+HM0068_Cipher/frontend/src/components/PatientCall.jsx:
+  21    useEffect(() => {
+  22:     fetch(`${process.env.BACKEND_URL}/call/getDoctorPeerId`)
+  23        .then((res) => res.json())
+
+HM0068_Cipher/frontend/src/components/Signup.jsx:
+  18      try {
+  19:       const response = await axios.post(`${process.env.BACKEND_URL}/signup`, {
+  20          name,
+
+HM0068_Cipher_1/frontend/src/components/AllAppointments.jsx:
+  22        try {
+  23:         const response = await axios.get(`${process.env.BACKEND_URL}/api/appointments/${userId}`);
+  24          setAppointments(response.data || []); // Ensure it's always an array
+
+HM0068_Cipher_1/frontend/src/components/Appointment.jsx:
+  33      try {
+  34:       const response = await axios.post(`${process.env.BACKEND_URL}/api/schedule`, formattedData);
+  35        console.log(response);
+
+HM0068_Cipher_1/frontend/src/components/AudioBooks.jsx:
+  14      axios
+  15:       .get("http://localhost:3000/books/youtube-audio")
+  16        .then((response) => {
+
+HM0068_Cipher_1/frontend/src/components/BabyName.jsx:
+  23          try {
+  24:             const response = await axios.post("http://localhost:3000/names/generate-names", requestData, {
+  25                  headers: { "Content-Type": "application/json" }
+
+HM0068_Cipher_1/frontend/src/components/Community.jsx:
+  17        try {
+  18:         const response = await axios.get("http://localhost:3000/community");
+  19          setPosts(response.data);
+
+  35        let userId = localStorage.getItem("userId")?.trim();
+  36:       const response = await axios.post("http://localhost:3000/community", {
+  37          userId,
+
+  57  
+  58:       const response = await axios.post(`http://localhost:3000/community/${postId}/reply`, {
+  59          userId,
+
+HM0068_Cipher_1/frontend/src/components/Diet.jsx:
+  23        try {
+  24:         const response = await axios.get(`http://localhost:3000/health/userinfo/${userId}`);
+  25          setHealthData(response.data);
+
+  43        }
+  44:       const response = await axios.get(`http://localhost:3000/health/recommend/${userId}`);
+  45        console.log(response.data);
+
+HM0068_Cipher_1/frontend/src/components/DoctorCall.jsx:
+  16        setPeerId(id);
+  17:       await fetch("http://localhost:3000/call/setDoctorPeerId", {
+  18          method: "POST",
+
+HM0068_Cipher_1/frontend/src/components/DrugCheck.jsx:
+  19          try {
+  20:             const response = await fetch(`http://localhost:3000/${endpoint}`, {
+  21                  method: "POST",
+
+HM0068_Cipher_1/frontend/src/components/Login.jsx:
+  17      try {
+  18:       const response = await axios.post("http://localhost:3000/login", {
+  19          email,
+
+  26        const { userId, name, token } = response.data;
+  27:       const healthInfo = await axios.get(`http://localhost:3000/health/userinfo/${userId}`)
+  28        const{height, weight, age,medicalConditions} =  healthInfo.data;
+
+HM0068_Cipher_1/frontend/src/components/MedicalHistory.jsx:
+  39      try {
+  40:         const response = await axios.post("http://localhost:3000/health", formData);
+  41  
+
+HM0068_Cipher_1/frontend/src/components/OtpVerify.jsx:
+  19  
+  20:       const response = await axios.post("http://localhost:3000/verify-otp", {
+  21          email,
+
+HM0068_Cipher_1/frontend/src/components/PatientCall.jsx:
+  21    useEffect(() => {
+  22:     fetch("http://localhost:3000/call/getDoctorPeerId")
+  23        .then((res) => res.json())
+
+HM0068_Cipher_1/frontend/src/components/Signup.jsx:
+  18      try {
+  19:       const response = await axios.post("http://localhost:3000/signup", {
+  20          name,
+
+sahilKapse/frontend/src/components/AddMarks.jsx:
+  16      try {
+  17:       const res = await axios.post("http://localhost:3000/addMarks", {
+  18          rollNo: Number(rollNo), // Convert to number
+
+sahilKapse/frontend/src/components/DeleteMarksheet.jsx:
+  15      try {
+  16:       const res = await axios.delete("http://localhost:3000/deleteMarksheet", {
+  17          data: { rollNo },
+
+sahilKapse/frontend/src/components/ShowMarksheet.jsx:
+  17      try {
+  18:       const res = await axios.get(`http://localhost:3000/marksheet/${rollNo}`);
+  19        setMarks(res.data.marks);
+
+sahilKapse/frontend/src/components/UpdateMarksheet.jsx:
+  40        const response = await axios.put(
+  41:         "http://localhost:3000/updateMarks",
+  42          updatedMarks
+
+todoApp/frontend/src/components/CompleteButton.jsx:
+  11        await axios.put(
+  12:         `http://localhost:3000/user/completeTodo/${todoId}`,
+  13          { completed: !isCompleted },
+
+todoApp/frontend/src/components/DeleteButton.jsx:
+   9      try {
+  10:       await axios.delete(`http://localhost:3000/user/delete/${todoId}`, {
+  11          headers: {
+
+todoApp/frontend/src/components/EditTodo.jsx:
+  23        await axios.put(
+  24:         `http://localhost:3000/user/updateTodo/${todo._id}`,
+  25          {
+
+todoApp/frontend/src/components/Fields.jsx:
+  20        await axios.post(
+  21:         "http://localhost:3000/user/addTodo",
+  22          {
+
+todoApp/frontend/src/components/Login.jsx:
+  16      try {
+  17:       const result = await axios.post("http://localhost:3000/user/login", {
+  18          username,
+
+todoApp/frontend/src/components/Signup.jsx:
+  17      try {
+  18:       const result = await axios.post("http://localhost:3000/user/signup", {
+  19          firstName,
+
+todoApp/frontend/src/components/Todos.jsx:
+  15        try {
+  16:         const response = await axios.get("http://localhost:3000/user/todos", {
+  17            headers: {
+
+url-shortner/README.md:
+  16  
+  17: Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  18  
+
+url-shortner/components/urlList.tsx:
+  22    const shortenedUrl = (code: string) => {
+  23:     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000"; // Added fallback for safety
+  24      return `${baseUrl}/${code}`;

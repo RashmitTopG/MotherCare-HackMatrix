@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 const DrugCheck = () => {
     const [medicines, setMedicines] = useState("");
     const [drug, setDrug] = useState("");
@@ -17,7 +21,7 @@ const DrugCheck = () => {
         setActiveButton(buttonType); // Disable other buttons
 
         try {
-            const response = await fetch(`http://localhost:3000/${endpoint}`, {
+            const response = await fetch(`${BACKEND_URL}/${endpoint}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),

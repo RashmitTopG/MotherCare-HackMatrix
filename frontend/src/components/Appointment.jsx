@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 export default function MakeAppointment() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -31,7 +35,7 @@ export default function MakeAppointment() {
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/api/schedule", formattedData);
+      const response = await axios.post(`${BACKEND_URL}/api/schedule`, formattedData);
       console.log(response);
 
       if (response.status === 201) {

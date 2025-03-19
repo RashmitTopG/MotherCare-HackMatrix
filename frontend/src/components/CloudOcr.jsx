@@ -3,6 +3,9 @@ import axios from "axios";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { FaCapsules, FaClipboardList, FaHeartbeat, FaExclamationCircle } from "react-icons/fa";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 const CloudOcr = () => {
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
@@ -32,7 +35,7 @@ const CloudOcr = () => {
         formData.append("image", image);
 
         try {
-            const response = await axios.post("http://localhost:3000/extract", formData, {
+            const response = await axios.post(`${BACKEND_URL}/extract`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             setText(response.data.text);

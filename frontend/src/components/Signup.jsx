@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context"; // Import AuthContext
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +19,7 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/signup", {
+      const response = await axios.post(`${BACKEND_URL}/signup`, {
         name,
         email,
         password,

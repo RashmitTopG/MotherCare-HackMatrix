@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Peer from "peerjs";
 import { Button } from "@/components/ui/button";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 const PatientCall = () => {
   const [peerId, setPeerId] = useState("");
   const [doctorPeerId, setDoctorPeerId] = useState(null);
@@ -19,7 +23,7 @@ const PatientCall = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/call/getDoctorPeerId")
+    fetch(`${BACKEND_URL}/call/getDoctorPeerId`)
       .then((res) => res.json())
       .then((data) => setDoctorPeerId(data.peerId));
   }, []);

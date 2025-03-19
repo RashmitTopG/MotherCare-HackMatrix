@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 const MedicalHistoryForm = () => {
   const [formData, setFormData] = useState({
     userId: localStorage.getItem("userId"),
@@ -37,7 +41,7 @@ const MedicalHistoryForm = () => {
     console.log(formData);
 
     try {
-        const response = await axios.post("http://localhost:3000/health", formData);
+        const response = await axios.post(`${BACKEND_URL}/health`, formData);
 
         if (response) {
             // ✅ Store form data in localStorage

@@ -10,11 +10,14 @@ const DoctorCall = () => {
   const [call, setCall] = useState(null);
   const [stream, setStream] = useState(null);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
   useEffect(() => {
     const newPeer = new Peer();
     newPeer.on("open", async (id) => {
       setPeerId(id);
-      await fetch("http://localhost:3000/call/setDoctorPeerId", {
+      await fetch(`${BACKEND_URL}/call/setDoctorPeerId`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ peerId: id }),

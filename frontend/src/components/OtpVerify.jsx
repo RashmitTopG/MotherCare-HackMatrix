@@ -4,6 +4,10 @@ import { Input } from "./ui/input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 export default function OtpVerification() {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
@@ -17,7 +21,7 @@ export default function OtpVerification() {
         return;
       }
 
-      const response = await axios.post("http://localhost:3000/verify-otp", {
+      const response = await axios.post(`${BACKEND_URL}/verify-otp`, {
         email,
         otp
       });

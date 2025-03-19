@@ -12,9 +12,17 @@ console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
  require('./utils/reminder')
 
- const frontendUrl = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:5173';  // Fallback for local development
+ const frontendUrl = process.env.VITE_FRONTEND_URL || "http://localhost:5173";  // Fallback for local development
 
- app.use(cors());
+ app.use(
+    cors({
+      origin: [frontendUrl, "https://localhost:5173"], // Allow both local and deployed frontend
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true, // Needed for authentication
+    })
+  );
+  app.options("*", cors()); 
 
 cron.schedule("* * * * *", async () => {  })// Runs every minute for testing
 

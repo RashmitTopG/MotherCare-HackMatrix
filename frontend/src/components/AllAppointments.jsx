@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +24,7 @@ const Appointments = () => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:3000/api/appointments/${userId}`);
+        const response = await axios.get(`${BACKEND_URL}/api/appointments/${userId}`);
         console.log(response);
         setAppointments(response.data || []); // Ensure it's always an array
       } catch (err) {

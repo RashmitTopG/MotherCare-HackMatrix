@@ -5,6 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
@@ -37,7 +40,7 @@ const Chatbot = () => {
         setMessages(newMessages);
 
         try {
-            const response = await axios.post("http://localhost:3000/chatbot", { message: text });
+            const response = await axios.post(`${BACKEND_URL}/chatbot`, { message: text });
             const botMessage = { text: response.data.reply, sender: "bot" };
             setMessages([...newMessages, botMessage]);
             speak(botMessage.text);

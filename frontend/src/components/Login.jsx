@@ -6,6 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context"; // Import AuthContext
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +19,7 @@ export default function Login() {
 
   const handleOnClick = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post(`${BACKEND_URL}/login`, {
         email,
         password,
       });
@@ -24,7 +28,7 @@ export default function Login() {
 
       console.log("Login successful:", response.data);
       const { userId, name, token } = response.data;
-      const healthInfo = await axios.get(`http://localhost:3000/health/userinfo/${userId}`)
+      const healthInfo = await axios.get(`${BACKEND_URL}/health/userinfo/${userId}`)
       const{height, weight, age,medicalConditions} =  healthInfo.data;
 
       localStorage.setItem("userId", userId);

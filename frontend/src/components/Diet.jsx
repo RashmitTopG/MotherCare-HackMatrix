@@ -3,6 +3,10 @@ import axios from "axios";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
 export default function Exercise() {
   const [healthData, setHealthData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +24,7 @@ export default function Exercise() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/health/userinfo/${userId}`);
+        const response = await axios.get(`${BACKEND_URL}/health/userinfo/${userId}`);
         setHealthData(response.data);
       } catch (err) {
         setError("Failed to fetch health data");
@@ -40,7 +44,7 @@ export default function Exercise() {
         setDietError("User ID not found.");
         return;
       }
-      const response = await axios.get(`http://localhost:3000/health/recommend/${userId}`);
+      const response = await axios.get(`${BACKEND_URL}/health/recommend/${userId}`);
       setDiet(response.data.mealPlan);
     } catch (err) {
       setDietError("Failed to fetch personalized diet");
