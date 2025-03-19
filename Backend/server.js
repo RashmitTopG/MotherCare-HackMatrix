@@ -12,17 +12,20 @@ console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
  require('./utils/reminder')
 
- const frontendUrl = import.meta.env.VITE_FRONTEND_URL || "http://localhost:5173";  // Fallback for local development
+ const frontendUrl = process.env.VITE_FRONTEND_URL || "http://localhost:5173";  // Fallback for local development
 
- app.use(
-    cors({
-      origin: [frontendUrl, "https://localhost:5173"], // Allow both local and deployed frontend
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-      allowedHeaders: ["Content-Type", "Authorization"],
-      credentials: true, // Needed for authentication
-    })
-  );
-  app.options("*", cors()); 
+// CORS Configuration
+app.use(
+  cors({
+    origin: [frontendUrl, "https://mother-care-hack-matrix-cfxy.vercel.app"], // Update with deployed frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Needed for authentication
+  })
+);
+
+// To handle preflight OPTIONS requests
+app.options("*", cors());
 
 cron.schedule("* * * * *", async () => {  })// Runs every minute for testing
 
