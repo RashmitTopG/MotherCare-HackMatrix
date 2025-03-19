@@ -43,8 +43,6 @@ const db = require('./db')
 const appointmentRoutes = require('./routes/appoinmentRoute')
 app.use('/api',appointmentRoutes)
 
-const userRoutes = require('./routes/userRouter')
-app.use('/login',userRoutes)
 
 const userAuth = require('./auth')
 app.use(userAuth)
