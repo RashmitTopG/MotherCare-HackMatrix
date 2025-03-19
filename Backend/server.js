@@ -12,7 +12,7 @@ console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
  require('./utils/reminder')
 
- const frontendUrl = process.env.VITE_FRONTEND_URL || "http://localhost:5173";  // Fallback for local development
+ const frontendUrl = import.meta.env.VITE_FRONTEND_URL || "http://localhost:5173";  // Fallback for local development
 
  app.use(
     cors({
@@ -42,7 +42,6 @@ const db = require('./db')
 //Router import
 const appointmentRoutes = require('./routes/appoinmentRoute')
 app.use('/api',appointmentRoutes)
-
 
 const userAuth = require('./auth')
 app.use(userAuth)
