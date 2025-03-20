@@ -122,6 +122,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      
       {/* Call to Action: My Health & Profile Modal */}
       <div className="flex items-center">
         <Button
@@ -188,6 +189,66 @@ export default function Navbar() {
           </Button>
         )}
       </div>
+
+      <div className="md:hidden flex">
+  <Sheet>
+    <SheetTrigger>
+      <Menu className="w-8 h-8 text-pink-700 cursor-pointer" />
+    </SheetTrigger>
+    <SheetContent
+      side="left"
+      className="bg-pink-50 text-pink-800 p-6 w-64 rounded-xl shadow-lg"
+    >
+      {/* Navigation Links */}
+      <div className="flex flex-col gap-3 text-lg font-medium mt-4">
+        <Link
+          to="/pregnancyTips"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Pregnancy Tips
+        </Link>
+        <Link
+          to="/doctors"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Doctors
+        </Link>
+        <Link
+          to="/community"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Community
+        </Link>
+        <Link
+          to="/cloudOcr"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Prescription Check
+        </Link>
+        <Link
+          to="/drugCheck"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Drug Check
+        </Link>
+        <Link
+          to="/audio-books"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Audio Books
+        </Link>
+        <Link
+          to="/diet"
+          className="py-3 px-4 rounded-lg text-center hover:bg-pink-200 hover:text-pink-800 transition-all"
+        >
+          Nutrition Guide
+        </Link>
+      </div>
+    </SheetContent>
+  </Sheet>
+</div>
+
+
     </nav>
   );
 }
